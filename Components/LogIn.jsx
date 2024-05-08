@@ -24,75 +24,100 @@ export default function LogIn() {
   };
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.heading}>Attendance System</Text>
-        <Text style={styles.login}>Log In</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="User ID"
-          value={userId}
-          onChangeText={setUserId}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <Text style={styles.fbtn}>Forgoted Password</Text>
+      {/* <View style={styles.container}> */}
+      <View style={styles.body}>
+        <View style={styles.upper}>
+          <Text style={styles.heading}>Attendance System</Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.login}>Log In</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="User ID"
+            value={userId}
+            onChangeText={setUserId}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Log In</Text>
+          </TouchableOpacity>
+          <Text style={styles.fbtn}>Forgot Password</Text>
+        </View>
       </View>
+      {/* </View> */}
     </>
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#fff',
-    },
-    heading: {
-      fontSize: 30,
-      fontWeight: 'bold',
-      marginBottom: 20,
-    },
-    login:{
-      marginTop: 20,
-      marginBottom:15,
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'cornflowerblue',
-    },
-    input: {
-      width: '80%',
-      height: 40,
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      paddingHorizontal: 10,
-      marginBottom: 10,
-    },
-    button: {
-      width: '80%',
-      height: 40,
-      backgroundColor: 'cornflowerblue',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 5,
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: 16,
-      fontWeight: 'bold',
-    },
-    fbtn:{
-      marginTop: 12,
-      color:'skyblue',
-    }
-  });
-  
+  body: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'cornflowerblue',
+  },
+  upper:{
+    // height:"80px"
+    // color:"black"
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin:'15px',
+    width:'100%',
+    height:'200px',
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    backgroundColor: '#96C7ED',
+  },
+  heading: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop:100,
+    marginBottom: 100,
+    height:"50px",
+    color:"white"
+
+  },
+  login: {
+    marginTop: 10,
+    marginBottom: 15,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  input: {
+    width: '80%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    color: 'black',
+  },
+  button: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#1769CF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  fbtn: {
+    marginTop: 12,
+    color: 'black',
+  },
+});

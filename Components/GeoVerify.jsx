@@ -1,29 +1,21 @@
 import React from 'react';
 import {View, Text, TouchableWithoutFeedback,Image, StyleSheet} from 'react-native';
+import Header from './Header';
 export default function GeoVerify() {
+
+  let verifyLocation=()=>{
+    console.log("press")
+  }
   return (
     <>
-      <View style={styles.homeContainer}>
-        <View style={styles.header}>
-          <View style={styles.left}>
-          <Image source={require('../Assests/images/hamburger.png')}
-          style={{ width: 30, height: 30, marginLeft: 10 }}
-      />
-          </View>
-          <View style={styles.center}>
-            {/* Header Text */}
-            <Text style={styles.headerText}>Attendance System</Text>
-          </View>
-        </View>
-
+        <Header/>
         <View style={styles.body}>
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={verifyLocation}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Varify Location</Text>
             </View>
           </TouchableWithoutFeedback>
         </View>
-      </View>
     </>
   );
 }
@@ -31,6 +23,7 @@ export default function GeoVerify() {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
+   
     // padding: 20,
   },
   header: {

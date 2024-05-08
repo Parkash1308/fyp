@@ -1,50 +1,68 @@
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback,Image, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; 
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import Header from './Header';
 
 const Home = () => {
   const navigation = useNavigation();
-  const markAttendance=()=>{
+  const markAttendance = () => {
+    console.log('Marking attendance...');
     navigation.navigate('GeoVerify');
-  }
+  };
 
-  const applyLeave=()=>{
+  const applyLeave = () => {
     navigation.navigate('ApplyLeave');
-  }
+  };
 
   return (
     <View style={styles.homeContainer}>
-      <View style={styles.header}>
-      <Image source={require('../Assests/images/hamburger.png')}
-          style={{ width: 30, height: 30, marginLeft: 10 }}
-      />
-        <View style={styles.center}>
-          {/* Header Text */}
-          <Text style={styles.headerText}>Attendance System</Text>
-        </View>
-      </View>
+      <Header/>
       <View style={styles.body}>
         {/* Buttons */}
         <TouchableWithoutFeedback>
-          <View style={styles.button}>
-            <Text style={styles.buttonText} onPress={markAttendance}>Mark Attendance</Text>
-          </View>
+          <TouchableOpacity style={styles.button} onPress={markAttendance}>
+            <Image
+              source={require('../Assests/images/attendance.png')}
+              style={{width: 80, height: 80, marginLeft: 10}}
+            />
+            <Text style={styles.buttonText}>Mark Attendance</Text>
+          </TouchableOpacity>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
-          <View style={styles.button}>
+          <TouchableOpacity style={styles.button}>
+            <Image
+              source={require('../Assests/images/ViewAttendance.png')}
+              style={{width: 80, height: 80, marginLeft: 10}}
+            />
             <Text style={styles.buttonText}>View Attendance</Text>
-          </View>
+          </TouchableOpacity>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
-          <View style={styles.button}>
-            <Text style={styles.buttonText } onPress={applyLeave}>Apply Leave</Text>
-          </View>
+          <TouchableOpacity style={styles.button} onPress={applyLeave}>
+            <Image
+              source={require('../Assests/images/Leave_application.png')}
+              style={{width: 80, height: 80, marginLeft: 10}}
+            />
+            <Text style={styles.buttonText}> Apply Leave</Text>
+          </TouchableOpacity>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback>
-          <View style={styles.button}>
+          <TouchableOpacity style={styles.button}>
+            <Image
+              source={require('../Assests/images/ViewProfile.jpg')}
+              style={{width: 80, height: 80, marginLeft: 10}}
+            />
+
             <Text style={styles.buttonText}>View Profile</Text>
-          </View>
+          </TouchableOpacity>
         </TouchableWithoutFeedback>
       </View>
     </View>
@@ -60,7 +78,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor:'#5FA6C8',
+    backgroundColor: '#5FA6C8',
     height: 50,
     padding: 10,
     borderRadius: 5,
@@ -70,7 +88,7 @@ const styles = StyleSheet.create({
   },
   hamburgerIcon: {
     /* Styles for the hamburger icon */
-    
+
     width: 30,
     height: 30,
     backgroundColor: '#333',
@@ -93,12 +111,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 10,
     padding: 10,
-    backgroundColor: '#007bff',
+    backgroundColor: '#A9CFFF',
     borderRadius: 5,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: 'black',
+    marginTop: 5,
   },
 });
 

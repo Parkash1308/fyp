@@ -26,7 +26,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="GeoVerify" component={GeoVerify} />
-        {/* <Stack.Screen name="ApplyLeave" component={ApplyLeave} /> */}
+        <Stack.Screen name="ApplyLeave" component={ApplyLeave} />
       </Stack.Navigator>
     </NavigationContainer>
     
