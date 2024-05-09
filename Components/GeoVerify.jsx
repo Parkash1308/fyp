@@ -17,7 +17,7 @@ export default function GeoVerify() {
   const navigation = useNavigation();
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-
+  let varify=false
   // Function to handle location retrieval
   const getCurrentLocation = async () => {
     try {
@@ -33,34 +33,38 @@ export default function GeoVerify() {
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log('geeting location');
-        await Geolocation.getCurrentPosition(
+        Geolocation.getCurrentPosition(
           position => {
             const currentLatitude = position.coords.latitude;
             const currentLongitude = position.coords.longitude;
             setLatitude(currentLatitude.toFixed(2).toString());
             setLongitude(currentLongitude.toFixed(2).toString());
+            varify=true
             console.log('location extracted:',latitude,longitude)
-            
           },
           error => Alert.alert('Error', error.message),
           {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000},
         );
-
-        if (latitude === '27.73' || longitude === '68.82') {
-          navigation.navigate('MarkAttendance');
-        } else {
-          Alert.alert('You are not in your office');
-        }
-
       } else {
         Alert.alert('Location Permission Denied');
       }
     } catch (err) {
       console.warn(err);
     }
-
   
   };
+
+  const markAttendance = async() => {
+    console.log('Marking attendance...');
+    await getCurrentLocation();
+    if(varify){
+      if(latitude==='27.71' && longitude==='68.84'){
+        navigation.navigate('MarkAttendance', { latitude: latitude, longitude: longitude });
+      }else{
+        Alert.alert("Not in Office")
+      }
+    }
+  }
 
   useEffect(() => {
     // Call getCurrentLocation when component mounts
@@ -74,12 +78,14 @@ export default function GeoVerify() {
     <>
       <Header />
       <View style={styles.body}>
-        <TouchableOpacity onPress={getCurrentLocation}>
+        <TouchableOpacity onPress={markAttendance}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Varify Location</Text>
           </View>
         </TouchableOpacity>
-        
+      </View>
+      <View>
+        <Text>{latitude},{longitude}</Text>
       </View>
     </>
   );
