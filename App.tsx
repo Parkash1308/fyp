@@ -6,12 +6,14 @@ import LogIn from './Components/LogIn'
 import Home from './Components/Home';
 import GeoVerify from './Components/GeoVerify';
 import ApplyLeave from './Components/ApplyLeave';
+import MarkAttendance from './Components/MarkAttendance';
 
 export type RootStackParamList = {
   LogIn: undefined;
   Home: undefined;
   GeoVerify: undefined;
   ApplyLeave: undefined;
+  MarkAttendance: undefined;
   
 };
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -27,6 +29,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="GeoVerify" component={GeoVerify} />
         <Stack.Screen name="ApplyLeave" component={ApplyLeave} />
+        <Stack.Screen name="MarkAttendance" component={MarkAttendance} />
       </Stack.Navigator>
     </NavigationContainer>
     

@@ -33,6 +33,7 @@ export default function LogIn() {
           <Text style={styles.login}>Log In</Text>
           <TextInput
             style={styles.input}
+    
             placeholder="User ID"
             value={userId}
             onChangeText={setUserId}
@@ -60,34 +61,33 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'cornflowerblue',
+    backgroundColor: '#96C7ED',
   },
   upper:{
-    // height:"80px"
-    // color:"black"
+    width:'100%',
+    borderBottomLeftRadius: 50,
+    borderBottomRightRadius: 50,
+    backgroundColor: 'cornflowerblue',
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    margin:'15px',
     width:'100%',
     height:'200px',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
     backgroundColor: '#96C7ED',
+    
   },
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop:100,
-    marginBottom: 100,
+    marginTop:70,
+    marginBottom: 70,
     height:"50px",
-    color:"white"
-
+    color:"white",
+    textAlign:'center'
   },
   login: {
-    marginTop: 10,
     marginBottom: 15,
     fontSize: 30,
     fontWeight: 'bold',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 40,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#616161',
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
