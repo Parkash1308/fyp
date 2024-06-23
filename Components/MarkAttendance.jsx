@@ -1,37 +1,45 @@
-import React from 'react';
-import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import React,{useState} from 'react';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import Header from './Header';
 
 export default function MarkAttendance() {
   const route = useRoute();
-  const {latitude, longitude} = route.params;
+  const [buttonTextColor, setButtonTextColor] = useState('red');
+  const { latitude, longitude } = route.params;
 
-  const inattendance = () =>{
+  const inattendance = () => {
+    setButtonTextColor('green');
     console.log("In")
   }
-  const outattendance=()=>{
+  const outattendance = () => {
+    setButtonTextColor('green');
     console.log('out')
-  } 
+  }
   return (
     <>
       <Header />
       <View style={styles.body}>
         <Image
           source={require('../Assests/images/user.png')}
-          style={{width: 50, height: 55, marginLeft: 10}}
+          style={{ width: 50, height: 55, marginLeft: 10 }}
         />
         <Text style={styles.name}>User</Text>
-        <TouchableOpacity style={styles.button} onPress={inattendance}>
-          <Text style={styles.buttonText}>IN</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={outattendance}>
-          <Text style={styles.buttonText}>OUT</Text>
-        </TouchableOpacity>
+        <View style={styles.mark}>
+          <TouchableOpacity style={[styles.button, { color: buttonTextColor }]} onPress={inattendance}>
+          <Text style={[styles.buttonText]}>IN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, { color: buttonTextColor }]} onPress={outattendance}>
+            <Text style={[styles.buttonText]}>OUT</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
-      <Text>Mark your attendance</Text>
-      <Text>Latitude: {latitude}</Text>
-      <Text>Longitude: {longitude}</Text>
+
+      <Text style={styles.text}>Temporary data </Text>
+      <Text style={styles.text}>Mark your attendance</Text>
+      <Text style={styles.text}>Latitude: {latitude}</Text>
+      <Text style={styles.text}>Longitude: {longitude}</Text>
     </>
   );
 }
@@ -46,18 +54,28 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 30,
     marginLeft: 20,
+    color: 'black',
   },
   button: {
-    marginLeft:30,
-    width:55,
-    height:55,
-    backgroundColor:'red',
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:55/2
+    marginLeft: 30,
+    width: 55,
+    height: 55,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 55 / 2
   },
   buttonText: {
-    fontSize:25,
-    color:'white'
+    fontSize: 25,
+    color: 'white'
   },
+  text: {
+    color: 'black'
+  },
+  mark:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:25,
+  }
 });

@@ -58,7 +58,7 @@ export default function GeoVerify() {
     console.log('Marking attendance...');
     await getCurrentLocation();
     if(varify){
-      if(latitude==='27.71' && longitude==='68.84'){
+      if(latitude==='27.73' && longitude==='68.82'){
         navigation.navigate('MarkAttendance', { latitude: latitude, longitude: longitude });
       }else{
         Alert.alert("Not in Office")
@@ -80,7 +80,7 @@ export default function GeoVerify() {
       <View style={styles.body}>
         <TouchableOpacity onPress={markAttendance}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Varify Location</Text>
+            <Text style={styles.buttonText}>Verify Location</Text>
           </View>
         </TouchableOpacity>
       </View>
